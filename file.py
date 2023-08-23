@@ -48,7 +48,7 @@ def get_data_from_api():
     #return json response text "response.text" contians respose from server in text format
     #parse this text into the Python Dictionary
     if response.status_code == 200:
-        print("yay i think that worked")
+        print("")
         return json.loads(response.text)
     else:
         print(f"Query failed. Status code: {response.status_code}.")
@@ -59,7 +59,35 @@ def get_data_from_api():
     #call the function get_data_from_api() and assign data to data variable
 
 data = get_data_from_api()
-print(data)
+
+#Title Information
+print(f"Title (Romaji): {data['data']['Media']['title']['romaji']}")
+print(f"Title (English): {data['data']['Media']['title']['english']}")
+print(f"Title (Native): {data['data']['Media']['title']['native']}")
+print('-' * 50)
+
+#Description
+description = data['data']['Media']['description'].replace('<br><br>\r\n', '\n\n').replace('<br>', '\n')
+print(f"Description:\n{description}")
+print('-' * 50)
+
+#Airing Date
+print(f"Start Date: {data['data']['Media']['startDate']['year']}-{data['data']['Media']['startDate']['month']}-{data['data']['Media']['startDate']['day']}")
+print('-' * 50)
+
+#Number of Episodes and Genres
+print(f"Number of Episodes: {data['data']['Media']['episodes']}")
+print(f"Genres: {', '.join(data['data']['Media']['genres'])}")
+print('-' * 50)
+
+#Average Score
+print(f"Average Score: {data['data']['Media']['averageScore']}%")
+print('-' * 50)
+
+#Characters
+character_names = [char['node']['name']['full'] for char in data ['data']['Media']['characters']['edges']]
+print("Characters:", ', '.join(character_names))
+
 
     #Save data to the JSON file
     #open file called anime_data.json in write mode
