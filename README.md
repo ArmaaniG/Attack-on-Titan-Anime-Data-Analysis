@@ -18,3 +18,13 @@ This program sources data from AniList API which is a comprehensive database for
 - Python
 - Requests - for API data fetching
 - JSON - for handling the response from the API
+
+## How to Setup and Run
+Prerequisites
+- Python 3.7 or higher
+- Libraries: 'requests'
+
+1. Clone the repository "git clone https://github.com/ArmaaniG/Attack-on-Titan-Anime-Data-Analysis.git"
+2. Navigate to the project directory "cd Attack-on-Titan-Anime-Data-Analysis"
+3. Install required Python libraries using "pip install requests"
+4. Run the project using "python file.py"
